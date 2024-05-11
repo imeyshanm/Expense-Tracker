@@ -12,13 +12,11 @@ namespace Expense_Tracker.DBContexts
         public DbSet<Income> Incomes { get; set; }
         public DbSet<Source> Sources { get; set; }
         public DbSet<Tag> Tags { get; set; }
-        public DbSet<Transaction> Transactions { get; set; }
+        public DbSet<TransactionType> Transactions { get; set; }
         public DbSet<User> Users { get; set; }
-
         public ExpenseContexts(DbContextOptions<ExpenseContexts> options) : base(options)
         {
         }
-
 
     }
 }
