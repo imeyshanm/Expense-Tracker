@@ -1,14 +1,11 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Expense_Tracker.Model
+namespace Expense_Tracker.DTO
 {
-    public class Category
+    public class CategoryDto
     {
-        [Key]
         public int CategoryID { get; set; }
-        [Required(ErrorMessage = "Name is required.")]
         public string Name { get; set; }
         public string Description { get; set; }
-
     }
 }

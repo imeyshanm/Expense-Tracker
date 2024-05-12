@@ -7,6 +7,13 @@ using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Expense_Tracker.Auth;
 using Microsoft.AspNetCore.Identity;
+//using Nelibur.ObjectMapper;
+using Expense_Tracker.Model;
+using Expense_Tracker.DTO;
+using Expense_Tracker.Configuration;
+using Mapster;
+using System.Reflection;
+using MapsterMapper;
 
 var builder = WebApplication.CreateBuilder(args);
 ConfigurationManager configuration = builder.Configuration;
@@ -55,6 +62,23 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddTransient<IBudgetRepository, BudgetRepository>();
+builder.Services.AddTransient<ICategoryRepository, CategoryRepository>();
+//TinyMapper.Bind<Category, CategoryDto>();
+//TinyMapper.Bind<List<Category>, List<CategoryDto>>();
+//builder.Services.AddAutoMapper(typeof(AutoMapperConfig));
+// Register Mapster
+//var config = TypeAdapterConfig.GlobalSettings;
+//config.Scan(Assembly.GetExecutingAssembly());
+//builder.Services.AddSingleton(config);
+//builder.Services.AddScoped<IMapper>();
+////builder.Services.AddMapster();
+///
+var typeAdapterConfig = TypeAdapterConfig.GlobalSettings;
+// scans the assembly and gets the IRegister, adding the registration to the TypeAdapterConfig
+typeAdapterConfig.Scan(Assembly.GetExecutingAssembly());
+// register the mapper as Singleton service for my application
+var mapperConfig = new Mapper(typeAdapterConfig);
+builder.Services.AddSingleton<IMapper>(mapperConfig);
 
 var app = builder.Build();
 
