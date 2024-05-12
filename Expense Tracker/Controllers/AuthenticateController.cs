@@ -66,7 +66,7 @@ namespace Expense_Tracker.Controllers
                     Token = new JwtSecurityTokenHandler().WriteToken(token),
                     RefreshToken = refreshToken,
                     Expiration = token.ValidTo,
-                    TokenType= "Bearer"
+                    TokenType = "Bearer"
                 });
             }
             return Unauthorized();
@@ -85,7 +85,7 @@ namespace Expense_Tracker.Controllers
                 Email = model.Email,
                 SecurityStamp = Guid.NewGuid().ToString(),
                 UserName = model.Username,
-                TokenType= "Bearer"
+                TokenType = "Bearer"
 
             };
             var result = await _userManager.CreateAsync(user, model.Password);

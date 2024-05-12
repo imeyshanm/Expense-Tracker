@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace Expense_Tracker.DBContexts
 {
-    public class ExpenseContexts : IdentityDbContext<ApplicationUser>
+    public class ExpenseContexts :IdentityDbContext<ApplicationUser>
     {
         public DbSet<Expense> Expenses { get; set; }
         public DbSet<Budget> Budgets { get; set; }

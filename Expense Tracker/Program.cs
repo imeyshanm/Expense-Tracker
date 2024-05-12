@@ -21,6 +21,8 @@ builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
     .AddEntityFrameworkStores<ExpenseContexts>()
     .AddDefaultTokenProviders();
 
+//builder.Services.AddScoped<IUserService, UserService>();
+
 // Adding Authentication
 builder.Services.AddAuthentication(options =>
 {
